@@ -1,0 +1,43 @@
+{
+  "welcome": "Welcome",
+  "navigation": {
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "admin": "Admin Panel"
+  },
+  "blog": {
+    "title": "Blog",
+    "noPosts": "No published posts",
+    "loading": "Loading...",
+    "readMore": "Read more",
+    "published": "Published",
+    "draft": "Draft"
+  },
+  "auth": {
+    "login": "Sign in",
+    "logout": "Sign out",
+    "loginYandex": "Sign in with Yandex",
+    "loginVk": "Sign in with VK",
+    "unauthorized": "Authorization required"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "posts": "Posts",
+    "createPost": "Create post",
+    "editPost": "Edit post",
+    "deletePost": "Delete post",
+    "confirmDelete": "Are you sure you want to delete this post?",
+    "save": "Save",
+    "cancel": "Cancel",
+    "published": "Published",
+    "draft": "Draft"
+  },
+  "common": {
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "back": "Back",
+    "loading": "Loading..."
+  }
+}

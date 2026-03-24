@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+.pnpm-store/
+
+# Nuxt build
+.nuxt/
+.output/
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Git
+.git/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+prisma/migrations/
+prisma/*.db
+
+# Docker
+docker-compose.override.yml

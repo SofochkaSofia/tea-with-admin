@@ -1,0 +1,54 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String?   @unique
+  yandexId      String?   @unique
+  vkId          String?   @unique
+  firstName     String?
+  lastName      String?
+  avatarUrl     String?
+  phone         String?
+  password      String?
+  role          String    @default("editor")
+  isActive      Boolean   @default(true)
+  lastLogin     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  posts         Post[]
+
+  @@index([email])
+  @@index([yandexId])
+  @@index([vkId])
+  @@index([role])
+  @@index([isActive])
+}
+
+model Post {
+  id          String    @id @default(uuid())
+  slug        String    @unique
+  title       Json
+  excerpt     Json
+  content     Json
+  image       String?
+  status      String    @default("draft")
+  publishedAt DateTime?
+  authorId    String?
+  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([authorId])
+  @@index([createdAt])
+}

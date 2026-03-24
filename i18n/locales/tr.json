@@ -1,0 +1,43 @@
+{
+  "welcome": "Hoş geldiniz",
+  "navigation": {
+    "home": "Ana Sayfa",
+    "blog": "Blog",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "admin": "Yönetim Paneli"
+  },
+  "blog": {
+    "title": "Blog",
+    "noPosts": "Yayınlanmış gönderi yok",
+    "loading": "Yükleniyor...",
+    "readMore": "Devamını oku",
+    "published": "Yayınlandı",
+    "draft": "Taslak"
+  },
+  "auth": {
+    "login": "Giriş yap",
+    "logout": "Çıkış yap",
+    "loginYandex": "Yandex ile giriş yap",
+    "loginVk": "VK ile giriş yap",
+    "unauthorized": "Giriş gerekiyor"
+  },
+  "admin": {
+    "dashboard": "Kontrol Paneli",
+    "posts": "Gönderiler",
+    "createPost": "Gönderi oluştur",
+    "editPost": "Gönderiyi düzenle",
+    "deletePost": "Gönderiyi sil",
+    "confirmDelete": "Bu gönderiyi silmek istediğinizden emin misiniz?",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "published": "Yayınlandı",
+    "draft": "Taslak"
+  },
+  "common": {
+    "error": "Bir hata oluştu",
+    "notFound": "Sayfa bulunamadı",
+    "back": "Geri",
+    "loading": "Yükleniyor..."
+  }
+}

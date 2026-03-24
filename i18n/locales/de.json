@@ -1,0 +1,43 @@
+{
+  "welcome": "Willkommen",
+  "navigation": {
+    "home": "Startseite",
+    "blog": "Blog",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "admin": "Admin-Bereich"
+  },
+  "blog": {
+    "title": "Blog",
+    "noPosts": "Keine veröffentlichten Beiträge",
+    "loading": "Wird geladen...",
+    "readMore": "Weiterlesen",
+    "published": "Veröffentlicht",
+    "draft": "Entwurf"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "loginYandex": "Mit Yandex anmelden",
+    "loginVk": "Mit VK anmelden",
+    "unauthorized": "Anmeldung erforderlich"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "posts": "Beiträge",
+    "createPost": "Beitrag erstellen",
+    "editPost": "Beitrag bearbeiten",
+    "deletePost": "Beitrag löschen",
+    "confirmDelete": "Möchten Sie diesen Beitrag wirklich löschen?",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "published": "Veröffentlicht",
+    "draft": "Entwurf"
+  },
+  "common": {
+    "error": "Ein Fehler ist aufgetreten",
+    "notFound": "Seite nicht gefunden",
+    "back": "Zurück",
+    "loading": "Wird geladen..."
+  }
+}

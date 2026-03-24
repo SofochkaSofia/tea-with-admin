@@ -1,0 +1,231 @@
+/* app/assets/css/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Базовые стили */
+@layer base {
+  body {
+    @apply bg-amber-50/30 text-gray-800 antialiased;
+  }
+
+  h1 {
+    @apply font-serif tracking-wide;
+  }
+
+  h2 {
+    @apply font-serif text-amber-900;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Компоненты */
+@layer components {
+  /* Навигация */
+  .nav-link {
+    @apply relative px-4 py-2 text-gray-700 hover:text-amber-800 transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-amber-700 transition-all duration-300 -translate-x-1/2;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Карточки */
+  .tea-card {
+    @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-amber-100;
+  }
+
+  .tea-card-image {
+    @apply h-48 bg-gradient-to-br from-amber-200 to-amber-600 relative overflow-hidden;
+  }
+
+  .tea-card-image::before {
+    content: '🍃';
+    @apply absolute inset-0 flex items-center justify-center text-6xl opacity-20 text-amber-900;
+  }
+
+  .tea-card-content {
+    @apply p-6;
+  }
+
+  .tea-card-title {
+    @apply text-xl font-serif font-bold text-amber-900 mb-2;
+  }
+
+  /* Кнопки */
+  .btn-primary {
+    @apply inline-block px-8 py-3 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors duration-300 shadow-md hover:shadow-lg font-medium tracking-wide;
+  }
+
+  .btn-secondary {
+    @apply inline-block px-6 py-2 border-2 border-amber-700 text-amber-700 rounded-lg hover:bg-amber-700 hover:text-white transition-all duration-300 font-medium;
+  }
+
+  /* Секции */
+  .hero-section {
+    @apply relative py-20 px-4 bg-gradient-to-br from-amber-100 to-amber-200 overflow-hidden;
+  }
+
+  .hero-section::before {
+    content: '☕';
+    @apply absolute text-[200px] opacity-5 top-1/2 -translate-y-1/2 right-10 rotate-12;
+  }
+
+  .feature-grid {
+    @apply grid md:grid-cols-2 gap-8 max-w-6xl mx-auto;
+  }
+
+  .feature-item {
+    @apply bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-amber-200/50;
+  }
+
+  .feature-icon {
+    @apply text-5xl mb-4;
+  }
+
+  .feature-title {
+    @apply text-2xl font-serif font-bold text-amber-800 mb-3;
+  }
+
+  .feature-text {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  /* Цитаты */
+  .testimonial-card {
+    @apply bg-white p-8 rounded-2xl shadow-lg relative border-l-4 border-amber-600;
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    @apply absolute -top-6 left-6 text-8xl text-amber-300 font-serif;
+  }
+
+  /* Список преимуществ */
+  .benefits-list {
+    @apply space-y-6;
+  }
+
+  .benefit-item {
+    @apply flex items-start gap-4 p-4 bg-white/70 rounded-lg hover:bg-white transition-colors duration-300;
+  }
+
+  .benefit-marker {
+    @apply w-8 h-8 bg-amber-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg;
+  }
+
+  .benefit-content {
+    @apply flex-1;
+  }
+
+  .benefit-title {
+    @apply font-serif font-bold text-amber-800 text-lg mb-1;
+  }
+
+  /* Статистика */
+  .stats-grid {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto;
+  }
+
+  .stat-item {
+    @apply text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl shadow-md;
+  }
+
+  .stat-number {
+    @apply text-3xl font-serif font-bold text-amber-800 mb-2;
+  }
+
+  .stat-label {
+    @apply text-sm uppercase tracking-wider text-gray-600;
+  }
+
+  /* Футер */
+  .footer {
+    @apply bg-amber-900 text-amber-100 py-12 mt-20;
+  }
+
+  .footer a {
+    @apply hover:text-white transition-colors duration-300;
+  }
+
+  /* Декоративные элементы */
+  .tea-leaf-decoration {
+    @apply relative;
+  }
+
+  .tea-leaf-decoration::before,
+  .tea-leaf-decoration::after {
+    content: '🍃';
+    @apply absolute text-4xl opacity-20;
+  }
+
+  .tea-leaf-decoration::before {
+    @apply -top-6 -left-6;
+  }
+
+  .tea-leaf-decoration::after {
+    @apply -bottom-6 -right-6 rotate-180;
+  }
+
+  /* Анимации */
+  @keyframes steam {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+  }
+
+  .steam-animation {
+    position: relative;
+  }
+
+  .steam-animation::before {
+    content: '💨';
+    @apply absolute -top-8 left-1/2 text-2xl opacity-0;
+    animation: steam 3s ease-in-out infinite;
+  }
+}
+
+/* Утилиты */
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.15);
+  }
+
+  .bg-pattern-leaves {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10c-5 0-10 5-10 10 0 5 5 10 10 10s10-5 10-10c0-5-5-10-10-10zm0 25c-8 0-15 7-15 15h30c0-8-7-15-15-15z' fill='%239c6b3e' fill-opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .hero-section::before {
+    @apply text-[120px] right-0;
+  }
+
+  .feature-grid {
+    @apply grid-cols-1;
+  }
+
+  .stats-grid {
+    @apply grid-cols-2;
+  }
+}

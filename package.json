@@ -1,0 +1,84 @@
+{
+  "name": "nuxt3-boilerplate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Универсальный шаблон Nuxt 3 с блогом, админкой и авторизацией",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck",
+    "docker:up": "docker-compose up -d",
+    "docker:up:tools": "docker-compose --profile tools up -d",
+    "docker:down": "docker-compose down",
+    "docker:down:volumes": "docker-compose down -v",
+    "docker:logs": "docker-compose logs -f",
+    "docker:ps": "docker-compose ps",
+    "docker:restart": "docker-compose restart",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:prod": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "prisma db seed",
+    "db:reset": "prisma migrate reset",
+    "dev:full": "pnpm docker:up && pnpm db:migrate && pnpm dev"
+  },
+  "dependencies": {
+    "@nuxt/image": "^1.9.0",
+    "@nuxtjs/i18n": "^9.2.0",
+    "@prisma/client": "^6.4.1",
+    "@vueuse/core": "^12.0.0",
+    "bcryptjs": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "nuxt": "^3.16.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.13.10",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "pnpm@10.6.1",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
+  },
+  "pnpm": {
+    "overrides": {
+      "unhead": "^2.0.0",
+      "@unhead/vue": "^2.0.0",
+      "@unhead/dom": "^2.0.0",
+      "@unhead/schema": "^2.0.0",
+      "@unhead/shared": "^2.0.0",
+      "magicast": "0.3.5",
+      "std-env": "3.8.1",
+      "nitropack": "2.11.7"
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "[",
+      "]",
+      "esbuild",
+      "prisma",
+      "sharp"
+    ]
+  }
+}

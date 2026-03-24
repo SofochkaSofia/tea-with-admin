@@ -1,0 +1,62 @@
+# Node modules
+node_modules/
+.pnpm-store/
+.npm/
+
+# Nuxt build
+.nuxt/
+.dist/
+.output/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+prisma/migrations/.migration_lock.toml
+
+# Tests
+coverage/
+.vue-test/
+*.test.ts
+*.spec.ts
+
+# Cache
+.cache/
+temp/
+tmp/
+*.tmp
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Бэкапы БД
+*.sql
+backup.sql
+*.dump
