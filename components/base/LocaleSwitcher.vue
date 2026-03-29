@@ -35,6 +35,9 @@
 </template>
 
 <script setup lang="ts">
+// 🔴 ДОБАВЛЕНО: Импорт onClickOutside из @vueuse/core
+import { onClickOutside } from '@vueuse/core'
+
 const { locales, locale: currentLocale, setLocale } = useI18n()
 const isOpen = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
@@ -48,5 +51,8 @@ const switchLocale = async (code: string) => {
   isOpen.value = false
 }
 
-onClickOutside(containerRef, () => { isOpen.value = false })
+// Закрываем выпадающий список при клике вне компонента
+onClickOutside(containerRef, () => {
+  isOpen.value = false
+})
 </script>

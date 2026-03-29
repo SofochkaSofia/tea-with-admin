@@ -5,22 +5,24 @@
     "blog": "Blog",
     "about": "Über uns",
     "contact": "Kontakt",
-    "admin": "Admin-Bereich"
+    "admin": "Admin-Panel"
   },
   "blog": {
     "title": "Blog",
-    "noPosts": "Keine veröffentlichten Beiträge",
-    "loading": "Wird geladen...",
+    "subtitle": "Artikel, Tipps und Neuigkeiten über Tee",
+    "loading": "Artikel werden geladen...",
+    "error": "Artikel konnten nicht geladen werden",
+    "noPosts": "Keine veröffentlichten Artikel",
+    "noPostsHint": "Schauen Sie später wieder vorbei — wir veröffentlichen regelmäßig neue Inhalte",
     "readMore": "Weiterlesen",
-    "published": "Veröffentlicht",
-    "draft": "Entwurf"
+    "untitled": "Unbetitelt"
   },
   "auth": {
     "login": "Anmelden",
     "logout": "Abmelden",
     "loginYandex": "Mit Yandex anmelden",
     "loginVk": "Mit VK anmelden",
-    "unauthorized": "Anmeldung erforderlich"
+    "unauthorized": "Autorisierung erforderlich"
   },
   "admin": {
     "dashboard": "Dashboard",
@@ -28,7 +30,7 @@
     "createPost": "Beitrag erstellen",
     "editPost": "Beitrag bearbeiten",
     "deletePost": "Beitrag löschen",
-    "confirmDelete": "Möchten Sie diesen Beitrag wirklich löschen?",
+    "confirmDelete": "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "published": "Veröffentlicht",
@@ -36,8 +38,13 @@
   },
   "common": {
     "error": "Ein Fehler ist aufgetreten",
+    "retry": "Wiederholen",
     "notFound": "Seite nicht gefunden",
     "back": "Zurück",
-    "loading": "Wird geladen..."
+    "loading": "Laden..."
+  },
+  "seo": {
+    "blogTitle": "Blog | Teehandel",
+    "blogDescription": "Artikel, Tipps und Neuigkeiten über Tee: Wie man aufbrüht, welche Sorten man wählt, die Geschichte des Tees"
   }
 }

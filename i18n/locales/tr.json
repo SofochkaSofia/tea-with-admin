@@ -1,5 +1,5 @@
 {
-  "welcome": "Hoş geldiniz",
+  "welcome": "Hoş Geldiniz",
   "navigation": {
     "home": "Ana Sayfa",
     "blog": "Blog",
@@ -9,25 +9,27 @@
   },
   "blog": {
     "title": "Blog",
-    "noPosts": "Yayınlanmış gönderi yok",
-    "loading": "Yükleniyor...",
-    "readMore": "Devamını oku",
-    "published": "Yayınlandı",
-    "draft": "Taslak"
+    "subtitle": "Çay hakkında makaleler, ipuçları ve haberler",
+    "loading": "Makaleler yükleniyor...",
+    "error": "Makaleler yüklenemedi",
+    "noPosts": "Yayınlanmış makale yok",
+    "noPostsHint": "Daha sonra tekrar gelin — düzenli olarak yeni içerik yayınlıyoruz",
+    "readMore": "Devamını Oku",
+    "untitled": "Başlıksız"
   },
   "auth": {
-    "login": "Giriş yap",
-    "logout": "Çıkış yap",
-    "loginYandex": "Yandex ile giriş yap",
-    "loginVk": "VK ile giriş yap",
-    "unauthorized": "Giriş gerekiyor"
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap",
+    "loginYandex": "Yandex ile Giriş Yap",
+    "loginVk": "VK ile Giriş Yap",
+    "unauthorized": "Yetkilendirme gerekli"
   },
   "admin": {
-    "dashboard": "Kontrol Paneli",
+    "dashboard": "Gösterge Paneli",
     "posts": "Gönderiler",
-    "createPost": "Gönderi oluştur",
-    "editPost": "Gönderiyi düzenle",
-    "deletePost": "Gönderiyi sil",
+    "createPost": "Gönderi Oluştur",
+    "editPost": "Gönderiyi Düzenle",
+    "deletePost": "Gönderiyi Sil",
     "confirmDelete": "Bu gönderiyi silmek istediğinizden emin misiniz?",
     "save": "Kaydet",
     "cancel": "İptal",
@@ -36,8 +38,13 @@
   },
   "common": {
     "error": "Bir hata oluştu",
+    "retry": "Yeniden Dene",
     "notFound": "Sayfa bulunamadı",
     "back": "Geri",
     "loading": "Yükleniyor..."
+  },
+  "seo": {
+    "blogTitle": "Blog | Çay Dükkanı",
+    "blogDescription": "Çay hakkında makaleler, ipuçları ve haberler: nasıl demlenir, hangi çeşitler seçilmeli, çayın tarihi"
   }
 }

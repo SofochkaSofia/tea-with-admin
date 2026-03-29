@@ -6,10 +6,21 @@
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Статьи, советы и новости о чае</p>
     </div>
 
-    <!-- Состояние загрузки -->
+    <!-- Загрузка -->
     <div v-if="pending" class="text-center py-16">
       <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-primary-600"></div>
       <p class="mt-4 text-gray-500">Загрузка статей...</p>
+    </div>
+
+    <!-- Ошибка -->
+    <div v-else-if="error" class="text-center py-16">
+      <svg class="mx-auto h-16 w-16 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="mt-4 text-lg text-red-600">Не удалось загрузить статьи</p>
+      <button @click="refresh" class="mt-4 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition">
+        Повторить
+      </button>
     </div>
 
     <!-- Нет статей -->
@@ -18,7 +29,6 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
       <p class="mt-4 text-lg text-gray-500">Нет опубликованных статей</p>
-      <p class="text-gray-400">Заходите позже — мы регулярно публикуем новый контент</p>
     </div>
 
     <!-- Сетка статей -->
@@ -29,14 +39,17 @@
         :to="`/blog/${post.slug}`"
         class="group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg hover:border-primary-300 transition"
       >
-        <div v-if="post.image" class="aspect-w-16 aspect-h-9 bg-gray-100">
-          <NuxtImg
+        <!-- Изображение -->
+        <div v-if="post.image" class="aspect-w-16 aspect-h-9 bg-gray-100 overflow-hidden">
+          <img
             :src="post.image"
             :alt="getPostTitle(post)"
             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            onerror="this.style.display='none'"
           />
         </div>
+
         <div class="p-6">
           <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition">
             {{ getPostTitle(post) }}
@@ -45,7 +58,9 @@
             {{ getPostExcerpt(post) }}
           </p>
           <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>{{ formatDate(post.publishedAt || post.createdAt) }}</span>
+            <time :datetime="post.publishedAt || post.createdAt">
+              {{ formatDate(post.publishedAt || post.createdAt) }}
+            </time>
             <span v-if="post.author" class="hidden sm:inline">
               {{ post.author.firstName }} {{ post.author.lastName }}
             </span>
@@ -57,10 +72,8 @@
 </template>
 
 <script setup lang="ts">
-// Импорты
 import { siteConfig } from '~/config/site'
 
-// Типы
 interface Author {
   id: string
   firstName: string | null
@@ -80,20 +93,18 @@ interface Post {
   author: Author | null
 }
 
-// Получаем текущую локаль
 const { locale } = useI18n()
 
-// Функции для получения текста на текущем языке
 const getPostTitle = (post: Post) => {
-  return post.title[locale.value] || post.title.ru || 'Без названия'
+  return post?.title?.[locale.value] || post?.title?.ru || 'Без названия'
 }
 
 const getPostExcerpt = (post: Post) => {
-  return post.excerpt[locale.value] || post.excerpt.ru || ''
+  return post?.excerpt?.[locale.value] || post?.excerpt?.ru || ''
 }
 
-// Форматирование даты
-const formatDate = (date: string) => {
+const formatDate = (date: string | null | undefined) => {
+  if (!date) return ''
   return new Date(date).toLocaleDateString('ru-RU', {
     year: 'numeric',
     month: 'long',
@@ -101,39 +112,22 @@ const formatDate = (date: string) => {
   })
 }
 
-// Загрузка постов с отладкой
+// 🔴 ВАЖНО: data: posts (не просто posts)
 const { data: posts, pending, error, refresh } = await useFetch<Post[]>('/api/posts', {
-  query: { status: 'published' },
-  getCachedData: (key) => {
-    if (process.server) return undefined
-    return useNuxtData(key).data.value
-  },
-  onResponse({ response }) {
-    console.log('[blog] API Response:', response._data)
-  },
-  onResponseError({ response }) {
-    console.error('[blog] API Error:', response)
-  }
+  query: { status: 'published' }
 })
 
-// Логирование ошибок
-if (error.value) {
-  console.error('[blog] Failed to load posts:', error.value)
-}
-
-// Логирование данных
-watch(posts, (newPosts) => {
-  console.log('[blog] Posts loaded:', newPosts?.length || 0, 'posts')
-  if (newPosts && newPosts.length > 0) {
-    console.log('[blog] First post:', newPosts[0])
-  }
-}, { immediate: true })
-
-// SEO
 useSeoMeta({
-  title: 'Блог',
-  description: 'Статьи, советы и новости о чае',
-  ogTitle: 'Блог | ' + siteConfig.name,
-  ogDescription: 'Полезные статьи о чае: как заваривать, какие сорта выбрать, история чая'
+  title: 'Блог | ' + siteConfig.name,
+  description: 'Статьи, советы и новости о чае'
 })
 </script>
+
+<style scoped>
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>

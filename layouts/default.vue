@@ -23,8 +23,8 @@
           </nav>
 
           <div class="flex items-center space-x-4">
-            <!-- ✅ Переключатель языка -->
-            <LocaleSwitcher />
+            <!-- ✅ ИСПРАВЛЕНО: BaseLocaleSwitcher (префикс папки "base") -->
+            <BaseLocaleSwitcher />
 
             <!-- Кнопка мобильного меню -->
             <button
@@ -98,7 +98,10 @@
 
 <script setup lang="ts">
 import { siteConfig } from '~/config/site'
+
 const mobileMenuOpen = ref(false)
+
+// Закрываем мобильное меню при навигации
 watch(() => useRoute().path, () => {
   mobileMenuOpen.value = false
 })

@@ -3,31 +3,33 @@
   "navigation": {
     "home": "Home",
     "blog": "Blog",
-    "about": "About",
+    "about": "About Us",
     "contact": "Contact",
     "admin": "Admin Panel"
   },
   "blog": {
     "title": "Blog",
-    "noPosts": "No published posts",
-    "loading": "Loading...",
+    "subtitle": "Articles, tips and news about tea",
+    "loading": "Loading articles...",
+    "error": "Failed to load articles",
+    "noPosts": "No published articles",
+    "noPostsHint": "Check back later — we regularly publish new content",
     "readMore": "Read more",
-    "published": "Published",
-    "draft": "Draft"
+    "untitled": "Untitled"
   },
   "auth": {
-    "login": "Sign in",
-    "logout": "Sign out",
-    "loginYandex": "Sign in with Yandex",
-    "loginVk": "Sign in with VK",
+    "login": "Log in",
+    "logout": "Log out",
+    "loginYandex": "Log in with Yandex",
+    "loginVk": "Log in with VK",
     "unauthorized": "Authorization required"
   },
   "admin": {
     "dashboard": "Dashboard",
     "posts": "Posts",
-    "createPost": "Create post",
-    "editPost": "Edit post",
-    "deletePost": "Delete post",
+    "createPost": "Create Post",
+    "editPost": "Edit Post",
+    "deletePost": "Delete Post",
     "confirmDelete": "Are you sure you want to delete this post?",
     "save": "Save",
     "cancel": "Cancel",
@@ -36,8 +38,13 @@
   },
   "common": {
     "error": "An error occurred",
+    "retry": "Retry",
     "notFound": "Page not found",
     "back": "Back",
     "loading": "Loading..."
+  },
+  "seo": {
+    "blogTitle": "Blog | Tea Shop",
+    "blogDescription": "Articles, tips and news about tea: how to brew, which varieties to choose, the history of tea"
   }
 }
