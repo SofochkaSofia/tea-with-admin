@@ -14,10 +14,8 @@ const emit = defineEmits<{
   <button
     :type="type || 'button'"
     :class="[
-      'px-6 py-3 rounded-lg transition font-medium',
-      variant === 'primary'
-        ? 'bg-primary-600 text-white hover:bg-primary-700'
-        : 'bg-gray-100 text-gray-900 hover:bg-gray-200',
+      'btn',
+      variant === 'primary' ? '' : 'bg-gray-100 text-gray-900 hover:bg-gray-200',
       disabled && 'opacity-50 cursor-not-allowed'
     ]"
     :disabled="disabled"

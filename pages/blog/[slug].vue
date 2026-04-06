@@ -1,24 +1,24 @@
 <!-- pages/blog/[slug].vue -->
 <template>
   <!-- Загрузка -->
-  <div v-if="pending" class="max-w-4xl mx-auto px-4 py-16 text-center">
+  <div v-if="pending" class="content-container loading-state">
     <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
     <p class="mt-4 text-gray-500">Загрузка статьи...</p>
   </div>
 
   <!-- Ошибка -->
-  <div v-else-if="error" class="max-w-4xl mx-auto px-4 py-16 text-center">
+  <div v-else-if="error" class="content-container error-state">
     <p class="text-red-600">Ошибка: {{ error?.message }}</p>
     <NuxtLink to="/blog" class="text-primary-600 mt-4 inline-block">← Назад</NuxtLink>
   </div>
 
   <!-- Статья -->
-  <div v-else-if="post" class="max-w-4xl mx-auto px-4 py-8">
+  <div v-else-if="post" class="content-container py-8">
     <NuxtLink to="/blog" class="text-primary-600 mb-6 inline-block">← Назад к блогу</NuxtLink>
 
     <h1 class="text-3xl font-bold mb-4">{{ post.title?.ru || post.title?.en || 'Без названия' }}</h1>
 
-    <div class="text-gray-500 mb-6">
+    <div class="text-text-muted mb-6">
       <time v-if="post.publishedAt">{{ new Date(post.publishedAt).toLocaleDateString('ru-RU') }}</time>
       <span v-if="post.author"> • {{ post.author.firstName }} {{ post.author.lastName }}</span>
     </div>

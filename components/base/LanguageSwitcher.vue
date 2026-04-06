@@ -1,6 +1,6 @@
 <!-- app/components/base/LocaleSwitcher.vue -->
 <template>
-  <div class="relative">
+  <div class="relative" ref="containerRef">
     <!-- Кнопка переключения языка -->
     <button
       @click="isOpen = !isOpen"
@@ -37,8 +37,13 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import { onClickOutside } from '@vueuse/core'
+import { useI18n } from '#i18n'
+
 const { locales, locale: currentLocale, setLocale } = useI18n()
 const isOpen = ref(false)
+const containerRef = ref<HTMLElement | null>(null)
 
 // Доступные локали (фильтруем системные)
 const availableLocales = computed(() => {
@@ -53,7 +58,7 @@ const switchLocale = async (code: string) => {
 
 // Закрывать меню при клике вне
 onClickOutside(
-  ref(null), // Можно передать ref на контейнер
-  () => { isOpen.value = false }
-)
+  containerRef, () => {
+  isOpen.value = false
+})
 </script>

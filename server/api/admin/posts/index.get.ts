@@ -14,21 +14,45 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const posts = await prisma.post.findMany({
-      orderBy: { createdAt: 'desc' },
-      include: {
-        author: {
-          select: {
-            id: true,
-            firstName: true,
-            lastName: true
+    // В конец файла, внутри try блока, заменить return posts на:
+
+      // Получаем параметры из query
+      const query = getQuery(event)
+      const { status, page = 1, limit = 10 } = query
+
+      // Фильтрация по статусу
+      const where: any = {}
+      if (status && status !== 'all') {
+        where.status = status
+      }
+
+      // Пагинация
+      const skip = (Number(page) - 1) * Number(limit)
+      const take = Number(limit)
+
+      return posts
+      const [posts, total] = await Promise.all([
+        prisma.post.findMany({
+          where,
+          orderBy: { createdAt: 'desc' },
+          skip,
+          take,
+          include: {
+            author: { select: { id: true, firstName: true, lastName: true, avatarUrl: true } }
           }
+        }),
+        prisma.post.count({ where })
+      ])
+
+      return {
+        posts,
+        pagination: {
+          page: Number(page),
+          limit: Number(limit),
+          total,
+          pages: Math.ceil(total / Number(limit))
         }
       }
-    })
-
-    console.log(`[admin/posts] Fetched ${posts.length} posts`)
-    return posts
 
   } catch (error: any) {
     console.error('[admin/posts] Database error:', error.message)

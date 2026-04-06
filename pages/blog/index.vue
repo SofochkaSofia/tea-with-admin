@@ -1,19 +1,19 @@
 <!-- pages/blog/index.vue -->
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="blog-container py-8">
     <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Блог</h1>
+      <h1 class="heading mb-4">Блог</h1>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Статьи, советы и новости о чае</p>
     </div>
 
     <!-- Загрузка -->
-    <div v-if="pending" class="text-center py-16">
+    <div v-if="pending" class="loading-state">
       <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-primary-600"></div>
       <p class="mt-4 text-gray-500">Загрузка статей...</p>
     </div>
 
     <!-- Ошибка -->
-    <div v-else-if="error" class="text-center py-16">
+    <div v-else-if="error" class="error-state">
       <svg class="mx-auto h-16 w-16 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Нет статей -->
-    <div v-else-if="!posts || posts.length === 0" class="text-center py-16">
+    <div v-else-if="!posts || posts.length === 0" class="empty-state">
       <svg class="mx-auto h-16 w-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
@@ -37,7 +37,7 @@
         v-for="post in posts"
         :key="post.id"
         :to="`/blog/${post.slug}`"
-        class="group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg hover:border-primary-300 transition"
+        class="group blog-card overflow-hidden"
       >
         <!-- Изображение -->
         <div v-if="post.image" class="aspect-w-16 aspect-h-9 bg-gray-100 overflow-hidden">

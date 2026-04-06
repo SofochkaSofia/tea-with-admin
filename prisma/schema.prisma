@@ -8,6 +8,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// This will run the seed.ts file when executing `prisma db seed`
+// seed = "node --loader=ts-node/esm prisma/seed.ts"
+
 model User {
   id            String    @id @default(uuid())
   email         String?   @unique

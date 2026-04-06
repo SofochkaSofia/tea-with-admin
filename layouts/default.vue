@@ -1,10 +1,10 @@
 <!-- layouts/default.vue -->
 <template>
   <div class="min-h-screen flex flex-col bg-white">
-    <header class="border-b border-gray-200 bg-white sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="nav sticky top-0 z-50">
+      <div class="container-lg">
         <div class="flex justify-between items-center h-16">
-          <div class="flex-shrink-0 flex items-center">
+          <div class="flex-shrink-0 flex items-center nav-logo">
             <NuxtLink to="/" class="text-xl font-bold text-gray-900 hover:text-primary-600 transition">
               {{ siteConfig.name }}
             </NuxtLink>
@@ -23,8 +23,8 @@
           </nav>
 
           <div class="flex items-center space-x-4">
-            <!-- ✅ ИСПРАВЛЕНО: BaseLocaleSwitcher (префикс папки "base") -->
-            <BaseLocaleSwitcher />
+            <!-- Переключатель языков -->
+            <LanguageSwitcher />
 
             <!-- Кнопка мобильного меню -->
             <button
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Мобильное меню -->
-      <div v-if="mobileMenuOpen" class="md:hidden border-t border-gray-200 bg-white">
+      <div v-if="mobileMenuOpen" class="md:hidden border-t border-border bg-bg-default">
         <div class="px-4 py-3 space-y-1">
           <NuxtLink
             v-for="item in siteConfig.navigation"
@@ -98,6 +98,7 @@
 
 <script setup lang="ts">
 import { siteConfig } from '~/config/site'
+import LanguageSwitcher from '~/components/base/LanguageSwitcher.vue'
 
 const mobileMenuOpen = ref(false)
 

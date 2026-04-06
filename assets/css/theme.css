@@ -1,0 +1,222 @@
+/*
+ * 🎨 THEME.CSS
+ * Основной файл стилей проекта.
+ * Импортирует Tailwind и кастомные слои.
+ * Все стили используют токены из tokens.css или утилиты Tailwind.
+ */
+
+/* Импорт базовых стилей Tailwind */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Импорт дизайн-токенов */
+@import './tokens.css';
+
+
+/*
+ * 🧱 @layer base
+ * Сбросы, глобальные стили, типографика, формы.
+ * Использует CSS-переменные из tokens.css.
+ */
+@layer base {
+  /* Сбросы и базовые стили */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--color-border-default);
+  }
+
+  /* Тело документа */
+  body {
+    @apply bg-white text-gray-900;
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Типографика */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-gray-900;
+  }
+
+  p {
+    @apply mb-4 text-gray-700;
+  }
+
+  a {
+    @apply text-amber-700;
+  }
+
+  a:hover {
+    @apply text-primary-700;
+  }
+
+  /* Формы */
+  input,
+  textarea,
+  select {
+    @apply rounded-md border border-border bg-white px-3 py-2 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500;
+  }
+}
+
+
+/*
+ * 🧩 @layer components
+ * Переиспользуемые компоненты: кнопки, карточки, навигация и т.д.
+ * Стили используют токены и Tailwind.
+ */
+@layer components {
+  /* Кнопка */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition-colors duration-200 ease-in-out;
+    background-color: var(--color-primary-500);
+    color: var(--color-text-inverse);
+    border-radius: var(--radius-md);
+  }
+
+  .btn:hover {
+    @apply bg-primary-600;
+  }
+
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  /* Карточка */
+  .card {
+    @apply rounded-lg border border-border bg-white p-6 shadow-md;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Заголовок */
+  .heading {
+    @apply text-4xl font-bold text-gray-900;
+  }
+
+  /* Карточка статьи */
+  .blog-card {
+    @apply bg-white rounded-lg shadow-sm border border-border hover:shadow-lg hover:border-primary-300 transition;
+  }
+
+  /* Состояние загрузки */
+  .loading-state {
+    @apply text-center py-16;
+  }
+
+  /* Состояние ошибки */
+  .error-state {
+    @apply text-center py-16;
+  }
+
+  /* Состояние пустого списка */
+  .empty-state {
+    @apply text-center py-16;
+  }
+
+  /* Навигация */
+  .nav {
+    @apply flex items-center justify-between p-4;
+    background-color: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  /* Логотип в навигации */
+  .nav-logo {
+    @apply mr-12;
+  }
+
+  /* Сетка */
+  .grid-2 {
+    @apply grid grid-cols-1 gap-6 md:grid-cols-2;
+  }
+
+  .grid-3 {
+    @apply grid grid-cols-1 gap-6 md:grid-cols-3;
+  }
+
+  /* Контейнер */
+  .container-sm {
+    @apply mx-auto max-w-screen-sm px-4;
+  }
+
+  .container-md {
+    @apply mx-auto max-w-screen-md px-4;
+  }
+
+  .container-lg {
+    @apply mx-auto max-w-screen-lg px-4;
+  }
+
+  /* Контейнер для контента */
+  .content-container {
+    @apply max-w-4xl mx-auto px-4;
+  }
+  /* Контейнер для блога */
+  .blog-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+
+/*
+ * ✨ @layer utilities
+ * Кастомные утилиты, недоступные в Tailwind по умолчанию.
+ * Используют токены.
+ */
+@layer utilities {
+  /* Градиент текста */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--color-primary-500), var(--color-primary-700));
+  }
+
+  /* Фоновые паттерны */
+  .bg-pattern-dots {
+    @apply bg-dots;
+  }
+
+  .bg-pattern-waves {
+    @apply bg-waves;
+  }
+
+  /* Скрытие скроллбара */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+/*
+ * 📱 @screen md/lg
+ * Адаптивные стили для компонентов.
+ * Используют утилиты Tailwind.
+ */
+@screen md {
+  .nav {
+    @apply p-6;
+  }
+
+  .card {
+    @apply p-8;
+  }
+}
+
+@screen lg {
+  .grid-3 {
+    @apply grid-cols-3;
+  }
+
+  .container-lg {
+    @apply max-w-screen-xl;
+  }
+}
